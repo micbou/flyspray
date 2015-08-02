@@ -132,7 +132,7 @@ class Setup extends Flyspray
       $this->mWriteStatus[$path] = $this->IsWriteable($file);
 
       // Return an html formated writeable/un-writeable string
-      return $this->ReturnStatus($this->mWriteStatus[$path], $type = 'writeable');
+      return self::ReturnStatus($this->mWriteStatus[$path], $type = 'writeable');
    }
 
    /**
@@ -146,20 +146,19 @@ class Setup extends Flyspray
 
       foreach ($this->mSupportedDatabases as $which => $database)
       {
-      // Checking if the database has libraries built into PHP. Returns true/false
-      $this->mAvailableDatabases[$which]['status'] = function_exists($database[1]);
+          // Checking if the database has libraries built into PHP. Returns true/false
+          $this->mAvailableDatabases[$which]['status'] = function_exists($database[1]);
 
-      // If the Application(Flyspray) supports the available database supported in PHP
-      $this->mAvailableDatabases[$which]['supported'] = ($database[0] === $this->mAvailableDatabases[$which]['status'])
-         ?  $this->mAvailableDatabases[$which]['status']
-         :  false;
+          // If the Application(Flyspray) supports the available database supported in PHP
+          $this->mAvailableDatabases[$which]['supported'] = ($database[0] === $this->mAvailableDatabases[$which]['status'])
+              ?  $this->mAvailableDatabases[$which]['status']
+              :  false;
 
-      // Just transferring the value for ease of veryfying Database support.
-      $status[] = $this->mAvailableDatabases[$which]['supported'];
+          // Just transferring the value for ease of veryfying Database support.
+          $status[] = $this->mAvailableDatabases[$which]['supported'];
 
-      // Generating the output to be displayed
-      $this->mAvailableDatabases[$which]['status_output'] =
-         $this->ReturnStatus($this->mAvailableDatabases[$which]['status'], $type = 'available');
+          // Generating the output to be displayed
+          $this->mAvailableDatabases[$which]['status_output'] = self::ReturnStatus($this->mAvailableDatabases[$which]['status'], $type = 'available');
       }
 
       // Check if any one database support exists.
@@ -194,7 +193,7 @@ class Setup extends Flyspray
       $this->mPhpVersionStatus = version_compare(PHP_VERSION, $this->mPhpRequired, '>=');
 
       // Return an html formated Yes/No string
-      return $this->ReturnStatus($this->mPhpVersionStatus, $type = 'yes');
+      return self::ReturnStatus($this->mPhpVersionStatus, $type = 'yes');
    }
 
    /**
@@ -478,7 +477,7 @@ class Setup extends Flyspray
       <tr>
          <td> - $which support</td>
          <td align=\"left\"><strong>{$this->mAvailableDatabases[$which]['status_output']}</strong></td>
-         <td align=\"center\"><strong>". $this->ReturnStatus($this->mAvailableDatabases[$which]['supported'], $type = 'support')  . "</strong></td>
+         <td align=\"center\"><strong>". self::ReturnStatus($this->mAvailableDatabases[$which]['supported'], $type = 'support')  . "</strong></td>
       </tr>";
 
       }
@@ -1047,7 +1046,7 @@ class Setup extends Flyspray
    * @param string $type The type of html format to return
    * @return string Depending on the type of format to return
    */
-   public function ReturnStatus($boolean, $type = 'yes')
+   static public function ReturnStatus($boolean, $type = 'yes')
    {
       // Do a switch on the type of status
       switch($type)
