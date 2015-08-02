@@ -103,7 +103,7 @@ class dokuwiki_TextFormatter
 	 *
 	 * @param string $textareaId
 	 */
-	function getDokuWikiToolbar( $textareaId ) {
+	public static function getDokuWikiToolbar( $textareaId ) {
 		global $conf, $baseurl;
 	
 		return '<a tabindex="-1" href="javascript:void(0);" onclick="surroundText(\'**\', \'**\', \''.$textareaId.'\'); return false;">
