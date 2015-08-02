@@ -566,7 +566,7 @@ class Setup extends Flyspray
             );
 
       if (substr(php_sapi_name(), 0, 3) == 'cgi') {
-          $test_settings[] = array ('CGI fix pathinfo','cgi.fix_pathinfo','On');
+          $test_settings[] = array ('CGI fix pathinfo','cgi.fix_pathinfo','ON');
       }
 
       $output = '';
@@ -1046,7 +1046,7 @@ class Setup extends Flyspray
    * @param string $type The type of html format to return
    * @return string Depending on the type of format to return
    */
-   static public function ReturnStatus($boolean, $type = 'yes')
+   public function ReturnStatus($boolean, $type = 'yes')
    {
       // Do a switch on the type of status
       switch($type)
