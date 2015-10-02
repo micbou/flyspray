@@ -542,21 +542,16 @@ function stopBubble(e) {
 	if (e.stopPropagation) { e.stopPropagation(); }
 }
 
-//login box toggling
-login_box_status = false;
-var toggleLoginBox = function(el){
-    //this would turn the box on
-    if(login_box_status == false){
-        el.addClassName('active');
-        showstuff('loginbox');
-    //this would turn the box off
-    } else {
+var toggleLoginBox = function(el) {
+    // Check if the login box is visible
+    if ($('loginbox').visible()) {
         el.removeClassName('active');
         hidestuff('loginbox');
+    } else {
+        el.addClassName('active');
+        showstuff('loginbox');
     }
-    //toggle functionality
-    if(login_box_status == true) login_box_status = false;
-    else login_box_status = true;
-    //return false to stop event bubbling
+
+    // Return false to stop event bubbling
     return false;
 }
