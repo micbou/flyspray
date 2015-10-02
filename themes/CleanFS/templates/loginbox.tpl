@@ -12,7 +12,7 @@
 </div>
 <div id="login_links">
     <div id="login_hidelink">
-        <a href="#" onclick="return toggleLoginBox(document.getElementById('show_loginbox'));"><small>hide</small></a>
+        <a href="#" onclick="return toggleLoginBox(document.getElementById('show_loginbox'));"><small>{L('hide')}</small></a>
     </div>
     <div class="remember_me">
         <label for="lbl_remember">{L('rememberme')}</label>
